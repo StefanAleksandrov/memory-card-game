@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Game</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="counter">
+      <h1 v-if="end" v-on:click="restart">Restart Game</h1>
+      <template v-else>
+        <h1>Remaining Time: {{time}}s</h1>
+        <h1>Your Moves: {{counter}}</h1>
+      </template>
+    </div>
+    <section class="memory-game">
+      <div v-for="(card, index) in cards" v-on:click="flipCard(index)" v-bind:class="card.flipped ? 'flip disable-card' : '' "
+        class="memory-card">
+        <img class="front-face" v-bind:src="card.image" v-bind:alt="card.alt" />
+        <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>
