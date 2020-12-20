@@ -2,7 +2,7 @@ let vm = new Vue({
     el: "#app",
 
     data: {
-        time: 30,
+        time: 0,
         start: false,
         end: false,
         card: {},
@@ -23,10 +23,18 @@ let vm = new Vue({
             { image: "img/backbone.svg", alt: "Backbone", flipped: false, foundPair: false },
             { image: "img/react.svg", alt: "React", flipped: false, foundPair: false },
             { image: "img/react.svg", alt: "React", flipped: false, foundPair: false },
-            { image: "img/css3.svg", alt: "React", flipped: false, foundPair: false },
-            { image: "img/css3.svg", alt: "React", flipped: false, foundPair: false },
-            { image: "img/html-5.svg", alt: "React", flipped: false, foundPair: false },
-            { image: "img/html-5.svg", alt: "React", flipped: false, foundPair: false },
+            { image: "img/css-3.svg", alt: "CSS-3", flipped: false, foundPair: false },
+            { image: "img/css-3.svg", alt: "CSS-3", flipped: false, foundPair: false },
+            { image: "img/html-5.svg", alt: "HTML-5", flipped: false, foundPair: false },
+            { image: "img/html-5.svg", alt: "HTML-5", flipped: false, foundPair: false },
+            { image: "img/c-sharp.svg", alt: "C#", flipped: false, foundPair: false },
+            { image: "img/c-sharp.svg", alt: "C#", flipped: false, foundPair: false },
+            { image: "img/python.svg", alt: "Python", flipped: false, foundPair: false },
+            { image: "img/python.svg", alt: "Python", flipped: false, foundPair: false },
+            { image: "img/xampp.svg", alt: "Xampp", flipped: false, foundPair: false },
+            { image: "img/xampp.svg", alt: "Xampp", flipped: false, foundPair: false },
+            { image: "img/mocha.svg", alt: "Mocha", flipped: false, foundPair: false },
+            { image: "img/mocha.svg", alt: "Mocha", flipped: false, foundPair: false },
         ]
     },
 
@@ -66,13 +74,12 @@ let vm = new Vue({
                     this.cards[newVal.index].foundPair = true;
                     this.flippedCards = this.cards.filter(x => x.flipped);
 
-                    if (this.flippedCards.length == 12) {
-                        setTimeout(() => {
+                    if (this.flippedCards.length == this.cards.length) {
+                        setTimeout(function () {
                             this.end = true;
                             clearInterval(this.countDown);
-                            alert("Congratulations! You win!");
-                        }, 600);
-                        return;
+                            return;
+                        }, 500)
                     }
 
                     this.flipAllCards();
@@ -85,21 +92,8 @@ let vm = new Vue({
 
         start: function () {
             this.countDown = setInterval(() => {
-                this.time--;
-
-                if (this.time <= 0) {
-                    alert("Game Over!");
-                    this.end = true;
-                    clearInterval(this.countDown);
-                }
+                this.time++;
             }, 1000);
-        },
-
-        time: function (newVal, oldVal) {
-            if (newVal == 0) {
-                setTimeout(() => {
-                }, 5000);
-            }
         },
     },
 

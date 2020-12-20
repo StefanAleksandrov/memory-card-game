@@ -12,19 +12,22 @@
 <body>
   <div id="app">
     <div class="counter">
-      <h1 v-if="end" v-on:click="restart">Restart Game</h1>
-      <template v-else>
-        <h1>Remaining Time: {{time}}s</h1>
-        <h1>Your Moves: {{counter}}</h1>
-      </template>
+      <h1 class="stats">Your Time: {{time}}s <span>Your Moves: {{counter}}</span></h1>
     </div>
     <section class="memory-game">
-      <div v-for="(card, index) in cards" v-on:click="flipCard(index)" v-bind:class="card.flipped ? 'flip disable-card' : '' "
-        class="memory-card">
+      <div v-for="(card, index) in cards" v-on:click="flipCard(index)"
+        v-bind:class="card.flipped ? 'flip disable-card' : '' " class="memory-card">
         <img class="front-face" v-bind:src="card.image" v-bind:alt="card.alt" />
         <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
       </div>
     </section>
+
+    <div v-if="end" class="end">
+      <h1>YOU WIN!</h1>
+      <h2>Your Time: {{time}}s</h2>
+      <h2>Your Moves: {{counter}}</h2>
+      <h1 v-on:click="restart" style="cursor: pointer;">RESTART</h1>
+    </div>
   </div>
 </body>
 
