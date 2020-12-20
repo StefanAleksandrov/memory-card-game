@@ -102,6 +102,11 @@ body {
 }
 
 @media only screen and (max-width: 1200px) {
+  .memory-game {
+    width: 90%;
+    height: 1200px;
+  }
+
   .memory-card {
     width: calc(25% - 10px);
     height: calc(16.66667% - 10px);
@@ -109,6 +114,11 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
+  .memory-game {
+    width: 90%;
+    height: 1500px;
+  }
+
   .memory-card {
     width: calc(50% - 10px);
     height: calc(8.333333% - 10px);
