@@ -9,6 +9,7 @@ let vm = new Vue({
         counter: 0,
         flippedCards: 0,
         countDown: null,
+        active: true,
 
         cards: [
             { image: "img/aurelia.svg", alt: "Aurelia", flipped: false, foundPair: false },
@@ -40,14 +41,15 @@ let vm = new Vue({
 
     methods: {
         flipCard(index) {
-            this.counter++;
-
-            if (!this.start) {
+            if (!this.active) {
+                return;
+            } else if (!this.start) {
                 this.start = true;
+            } else {
+                this.counter++;
+                this.cards[index].flipped = true;
+                this.card = Object.assign({}, this.cards[index], { index });
             }
-
-            this.cards[index].flipped = true;
-            this.card = Object.assign({}, this.cards[index], { index });
         },
 
         flipAllCards() {
@@ -69,7 +71,13 @@ let vm = new Vue({
     watch: {
         card: function (newVal, oldVal) {
             if (this.counter % 2 == 0) {
-                if (newVal.image == oldVal.image) {
+                this.active = false;
+
+                setTimeout(() => {
+                    this.active = true;
+                }, 500);
+
+                if ((newVal.alt == oldVal.alt) && (newVal.index !== oldVal.index)) {
                     this.cards[oldVal.index].foundPair = true;
                     this.cards[newVal.index].foundPair = true;
                     this.flippedCards++;
@@ -80,14 +88,13 @@ let vm = new Vue({
                             clearInterval(this.countDown);
                             return;
                         }, 500)
+                    } else {
+                        this.flipAllCards();
                     }
-
-                    this.flipAllCards();
                 } else {
                     this.flipAllCards();
                 }
             }
-
         },
 
         start: function () {
