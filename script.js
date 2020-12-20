@@ -63,7 +63,16 @@ let vm = new Vue({
         },
 
         restart() {
-            location.reload();
+            this.time = 0;
+            this.start = false;
+            this.end = false;
+            this.card= { };
+            this.counter = 0;
+            this.flippedCards = 0;
+            this.countDown = null;
+            this.active = true;
+            this.cards.map(x => x.foundPair = false)
+            this.cards.sort((a, b) => (Math.random() - 0.5));
         },
 
     },
