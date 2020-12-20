@@ -7,7 +7,7 @@ let vm = new Vue({
         end: false,
         card: {},
         counter: 0,
-        flippedCards: [],
+        flippedCards: 0,
         countDown: null,
 
         cards: [
@@ -72,10 +72,13 @@ let vm = new Vue({
                 if (newVal.image == oldVal.image) {
                     this.cards[oldVal.index].foundPair = true;
                     this.cards[newVal.index].foundPair = true;
-                    this.flippedCards = this.cards.filter(x => x.flipped);
+                    this.flippedCards++;
 
-                    if (this.flippedCards.length == this.cards.length) {
-                        setTimeout(function () {
+                    console.log(this.flippedCards);
+                    console.log(this.cards.length / 2);
+
+                    if (this.flippedCards == (this.cards.length / 2)) {
+                        setTimeout(() => {
                             this.end = true;
                             clearInterval(this.countDown);
                             return;
