@@ -23,6 +23,10 @@ let vm = new Vue({
             { image: "img/backbone.svg", alt: "Backbone", flipped: false, foundPair: false },
             { image: "img/react.svg", alt: "React", flipped: false, foundPair: false },
             { image: "img/react.svg", alt: "React", flipped: false, foundPair: false },
+            { image: "img/css3.svg", alt: "React", flipped: false, foundPair: false },
+            { image: "img/css3.svg", alt: "React", flipped: false, foundPair: false },
+            { image: "img/html-5.svg", alt: "React", flipped: false, foundPair: false },
+            { image: "img/html-5.svg", alt: "React", flipped: false, foundPair: false },
         ]
     },
 
