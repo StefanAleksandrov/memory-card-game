@@ -74,9 +74,6 @@ let vm = new Vue({
                     this.cards[newVal.index].foundPair = true;
                     this.flippedCards++;
 
-                    console.log(this.flippedCards);
-                    console.log(this.cards.length / 2);
-
                     if (this.flippedCards == (this.cards.length / 2)) {
                         setTimeout(() => {
                             this.end = true;
