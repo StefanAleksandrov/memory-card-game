@@ -43,9 +43,11 @@ let vm = new Vue({
         flipCard(index) {
             if (!this.active) {
                 return;
-            } else if (!this.start) {
-                this.start = true;
             } else {
+                if (!this.start) {
+                    this.start = true;
+                }
+
                 this.counter++;
                 this.cards[index].flipped = true;
                 this.card = Object.assign({}, this.cards[index], { index });
@@ -66,7 +68,7 @@ let vm = new Vue({
             this.time = 0;
             this.start = false;
             this.end = false;
-            this.card= { };
+            this.card = {};
             this.counter = 0;
             this.flippedCards = 0;
             this.countDown = null;

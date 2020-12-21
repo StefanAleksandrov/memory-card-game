@@ -16,7 +16,7 @@ body {
 
 .memory-game {
   width: 70%;
-  height: 885px;
+  height: 870px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -63,7 +63,7 @@ body {
 }
 
 .counter {
-  margin: 10px auto;
+  margin: 5px auto;
   font-size: 15px;
   text-align: center;
   color: white;
